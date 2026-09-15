@@ -1,110 +1,229 @@
 # Customer-Churn-Predict Using Machine Learning
-## 📌 Project Overview
+# 📊 Customer Churn Prediction & Analysis
 
-Customer Churn Prediction is a Machine Learning project designed to predict whether a customer is likely to leave a company's services or continue as an active customer.
+An end-to-end **Customer Churn Prediction and Analysis** project using **Python, SQL, Machine Learning, and Power BI**.
 
-Customer churn is an important business problem because losing existing customers can negatively affect revenue and business growth. This project uses customer-related data and machine learning techniques to identify customers who are at a higher risk of churning.
-
----
-
-## 🎯 Project Objectives
-
-- Predict customer churn using Machine Learning.
-- Identify the major factors responsible for customer churn.
-- Analyze customer behavior through Exploratory Data Analysis (EDA).
-- Evaluate the performance of the prediction model.
-- Provide useful business insights and recommendations.
-- Help businesses improve customer retention strategies.
+The project focuses on analyzing customer behavior, identifying factors associated with churn, predicting customers who are likely to churn, and presenting business insights through an interactive Power BI dashboard.
 
 ---
 
-## 🛠️ Technologies & Tools Used
+## 🎯 Project Objective
+
+The main objectives of this project are:
+
+- Analyze customer churn patterns
+- Identify important factors affecting customer churn
+- Perform data cleaning and exploratory data analysis
+- Use SQL for customer and churn analysis
+- Build a Machine Learning model to predict customer churn
+- Evaluate the ML model using appropriate performance metrics
+- Create an interactive Power BI dashboard
+- Generate actionable business insights for customer retention
+
+---
+
+## 🛠️ Tools & Technologies
 
 - **Python**
-- **Pandas** – Data manipulation and analysis
-- **NumPy** – Numerical computations
-- **Matplotlib** – Data visualization
-- **Seaborn** – Statistical visualization
-- **Scikit-learn** – Machine Learning
-- **Jupyter Notebook** – Development environment
-- **GitHub** – Project repository
+- **Pandas**
+- **NumPy**
+- **Matplotlib**
+- **Seaborn**
+- **Scikit-learn**
+- **SQL**
+- **Power BI**
+- **DAX**
+- **Jupyter Notebook**
 
 ---
 
-## 🔄 Project Workflow
+# 🔄 Project Workflow
 
 ```text
-Data Collection
-      ↓
-Data Cleaning
-      ↓
+Raw Customer Data
+       ↓
+Data Cleaning using Python
+       ↓
 Exploratory Data Analysis
-      ↓
+       ↓
+SQL Data Analysis
+       ↓
+Feature Engineering
+       ↓
+Machine Learning
+       ↓
+Churn Prediction
+       ↓
+Power BI Dashboard
+       ↓
+Business Insights
+
+# 🐍 1. Python – Data Cleaning & EDA
+
+Python was used for:
+Loading the dataset
+Understanding the data
+Handling missing values
+Converting data types
+Removing/handling inconsistent values
+Exploratory Data Analysis
+Data visualization
+Feature preparation
+Libraries used:
+Pandas
+NumPy
+Matplotlib
+Seaborn
+## 🗄️ 2. SQL – Customer Churn Analysis
+
+SQL was used to perform:
+Total customer analysis
+Churned customer analysis
+Churn rate calculation
+Contract-wise churn analysis
+Internet-service-wise churn analysis
+Payment-method-wise churn analysis
+Average monthly charges analysis
+Average total charges analysis
+Example Query
+        SELECT
+            Contract,
+            COUNT(*) AS Total_Customers,
+            SUM(
+                CASE
+                    WHEN Churn = 'Yes' THEN 1
+                    ELSE 0
+                END
+            ) AS Churned_Customers
+        FROM customer
+        GROUP BY Contract;
+## 🤖 3. Machine Learning – Churn Prediction
+
+Machine Learning was used to predict whether a customer is likely to churn.
+ML Workflow
+Cleaned Data
+     ↓
 Feature Selection
-      ↓
-Data Preprocessing
-      ↓
-Feature Scaling
-      ↓
+     ↓
+Categorical Encoding
+     ↓
 Train-Test Split
-      ↓
+     ↓
+Feature Scaling
+     ↓
 Model Training
-      ↓
+     ↓
+Prediction
+     ↓
 Model Evaluation
-      ↓
-Customer Churn Prediction
 
-# 🔍 Exploratory Data Analysis		
+## Features Used
 
-Different visualizations were used to understand customer behavior and identify patterns related to churn.
-
-## Visualizations Included
-Bar Plot
-Count Plot
-Scatter Plot
-Heatmap
-Distribution Plot
-Correlation Analysis
-These visualizations help identify relationships between customer features and churn.
-
-## Machine Learning Model
-
+Important customer attributes include:
+Tenure
+Contract
+Internet Service
+Payment Method
+Monthly Charges
+Total Charges
+Online Security
+Tech Support
+Partner
+Dependents
+Senior Citizen
+Models
+The project can use and compare:
 Logistic Regression
-Logistic Regression is used as the classification algorithm to predict whether a customer will churn or not.
-Target Variable:
-1 → Customer Churn
-0 → Customer Does Not Churn
+Decision Tree
+Random Forest
+Example
+        from sklearn.model_selection import train_test_split
+        from sklearn.linear_model import LogisticRegression
 
-## 📈 Model Evaluation
-The model is evaluated using the following performance metrics:
-Accuracy Score
-Precision Score
-Recall Score
-F1 Score
-ROC-AUC Score
-Classification Report
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y,
+            test_size=0.2,
+            random_state=42
+        )
+        
+        model = LogisticRegression(max_iter=1000)
+        
+        model.fit(X_train, y_train)
+        
+        y_pred = model.predict(X_test)
+
+## Model Evaluation
+
+The model is evaluated using:
+Accuracy
+Precision
+Recall
+F1-Score
 Confusion Matrix
+Accuracy
+Precision
+Recall
+F1-Score
 
-## 💡 Business Insights
-The analysis helps businesses understand:
-Which customers are more likely to churn.
-Which customer characteristics are associated with churn.
-How customer behavior affects retention.
-Which customers may require special attention.
+## Confusion Matrix
 
-## 📌 Business Recommendations
-Based on the analysis, businesses can:
-Provide personalized offers to high-risk customers.
-Improve customer support and service quality.
-Introduce loyalty and retention programs.
-Monitor customers with a high probability of churn.
-Provide suitable plans or discounts to retain valuable customers.
+The final model should be selected based on the business objective and model performance rather than accuracy alone.
 
-## ✅ Conclusion
-The Customer Churn Prediction project demonstrates how Machine Learning can be used to solve a real-world business problem.
-By predicting customers who are likely to churn, organizations can take proactive actions to improve customer satisfaction, increase retention, and reduce potential revenue loss.
+📊 4. Power BI Dashboard
+Power BI was used to create an interactive dashboard for customer churn analysis.
 
-## 👩‍💻 Author
+Dashboard KPIs
+Total Customers
+Churned Customers
+Churn Rate %
+Average Monthly Charges
+Dashboard Visuals
+Churn by Contract
+Churn by Internet Service
+Churn by Payment Method
+Gender-wise Churn
+Customer tenure analysis
+Monthly Charges analysis
+Interactive slicers
+Slicers
+Contract
+Internet Service
+Payment Method
+Gender
+Senior Citizen
+📈 DAX Measures
+Total Customers
+Total Customers =
+COUNTROWS('customer')
+Churned Customers
+Churned Customers =
+CALCULATE(
+    COUNTROWS('customer'),
+    'customer'[Churn] = "Yes"
+)
+Churn Rate
+Churn Rate % =
+DIVIDE(
+    [Churned Customers],
+    [Total Customers],
+    0
+)
+Average Monthly Charges
+Avg Monthly Charges =
+AVERAGE('customer'[MonthlyCharges])
 
-Ms. Poonam
-Computer Science / Data Analytics.
+💡 Business Insights
+The project helps businesses understand:
+Which contract types have higher churn
+Which payment methods are associated with higher churn
+How internet services relate to churn
+Whether monthly charges differ between churned and retained customers
+How customer tenure affects churn
+Which customers may require retention strategies
+Machine Learning adds a predictive layer by identifying customers who may be at higher risk of churn.
+
+🎓 Skills Demonstrated
+Python | SQL | Machine Learning | Power BI | DAX | Pandas | NumPy | Scikit-learn | Data Cleaning | EDA | Data Visualization | Predictive Analytics | Business Analysis
+👩‍💻 Author
+Poonam Rajora
+B.Tech | Aspiring Data Analyst
